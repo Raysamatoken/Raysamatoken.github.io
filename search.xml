@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>安卓所有数据走代理软件接口</title>
+      <link href="/2022/01/19/an-zhuo-suo-you-shu-ju-zou-dai-li-ruan-jian-jie-kou/"/>
+      <url>/2022/01/19/an-zhuo-suo-you-shu-ju-zou-dai-li-ruan-jian-jie-kou/</url>
+      
+        <content type="html"><![CDATA[<pre class="line-numbers language-none"><code class="language-none">ip rule add from all fwmark 0x0/0x20000 uidrange 0-99999 lookup tun0 pref 11600ip route add 0.0.0.0/0 dev tun0 table tun0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>node.js npm使用国内镜像源</title>
       <link href="/2022/01/19/node.js-npm-shi-yong-guo-nei-jing-xiang-yuan/"/>
       <url>/2022/01/19/node.js-npm-shi-yong-guo-nei-jing-xiang-yuan/</url>
