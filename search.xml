@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title>在Termux中使用LSPatch</title>
+      <link href="/2022/01/31/zai-termux-zhong-shi-yong-lspatch/"/>
+      <url>/2022/01/31/zai-termux-zhong-shi-yong-lspatch/</url>
+      
+        <content type="html"><![CDATA[<ol><li><p>安装最新版 Termux<br>下文中使用的版本为 0.118-debug 版本的 Termux，较老的版本可能无法安装 openjdk。由于签名不同，安装前请先卸载原来的Termux。<br><img src="https://raw.githubusercontent.com/Raysamatoken/hexo/main/img/20220131172646.png">  </p></li><li><p>配置 apt 源<br>首先将 Termux 的默认源地址替换为清华 tuna 源，保证速度。<br><img src="https://raw.githubusercontent.com/Raysamatoken/hexo/main/img/20220131172731.png"><br><img src="https://raw.githubusercontent.com/Raysamatoken/hexo/main/img/20220131172755.png"><br>命令：<br><code>sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24 stable main@'; $PREFIX/etc/apt/sources.list</code>  </p></li><li><p>安装openjdk<br>执行 pkg install openjdk-17<br>在跑完一长串代码以后，执行java -version确认是否安装成功。<br><img src="https://raw.githubusercontent.com/Raysamatoken/hexo/main/img/20220131172913.png"><br>在开始操作之前记得赋予Termux全部文件管理权限，便于之后操作。<br>然后cd到lspatch.jar文件的所在目录即可。<br><img src="https://raw.githubusercontent.com/Raysamatoken/hexo/main/img/20220131172935.png"><br><img src="https://raw.githubusercontent.com/Raysamatoken/hexo/main/img/20220131172954.png"></p></li></ol>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>安卓应用lspatch注入Xposed框架</title>
+      <link href="/2022/01/31/an-zhuo-ying-yong-lspatch-zhu-ru-xposed-kuang-jia/"/>
+      <url>/2022/01/31/an-zhuo-ying-yong-lspatch-zhu-ru-xposed-kuang-jia/</url>
+      
+        <content type="html"><![CDATA[<p>Lspatch项目地址:<br><a href="https://github.com/LSPosed/LSPatch">https://github.com/LSPosed/LSPatch</a><br><img src="https://raw.githubusercontent.com/Raysamatoken/hexo/main/img/20220131171921.png">  </p><p>2 准备工作：（lspatch目前是在电脑端使用的，接下来的操作都是基于Windows11，其它版本未必不可）  </p><p>2.1 下载java11 安装并配置环境<br><img src="https://raw.githubusercontent.com/Raysamatoken/hexo/main/img/20220131172040.png">  </p><p>2.2 下载lspatch-release<br>这个版本打包bilibili实测可用（因为开发者正在开发，其它版本问题未知）  </p><p>2.3 下载需要的apk<br>包括要打包（也就是你想破解）的apk（和你想使用的xposed应用）<br>举个例子：分别为1.apk和1_xposed.apk（最好都用英文命名，防止出现问题）  </p><p>2.4 移动至同一文件夹<br>（实际上这一步骤只是用来让我们运行jar时不用输入绝对路径）<br>我们先将lspatch-release解压到一个文件夹lspatch，然后将需要破解的应用和xpose应用移动至lspatch文件夹<br><img src="https://raw.githubusercontent.com/Raysamatoken/hexo/main/img/20220131172147.png">  </p><p>3 开始打包<br>3.1 打开CMD或者PowerShell窗口<br>如果此时命令行窗口中的默认路径不是lspatch文件夹的路径，那么请更改至该路径或者将之后命令中用到的路径都改为绝对路径  </p><p>3.2 输入命令<br>输入 <code>java -jar lspatch.jar -h</code> 获取帮助信息<br><img src="https://raw.githubusercontent.com/Raysamatoken/hexo/main/img/20220131172224.png"><br>不内置xposed应用作为模块：<br><code>java -jar lspatch.jar</code> 要打包的应用的文件名.apk<br>例：<code>java -jar lspatch.jar 1.apk</code><br>内置xposed应用作为模块：<br><code>java -jar lspatch.jar</code> 要打包的应用的文件名.apk -m 要内置的xposed应用的文件名.apk<br>例：<code> java -jar lspatch.jar 1.apk -m 1_xposed.apk</code><br><img src="https://raw.githubusercontent.com/Raysamatoken/hexo/main/img/20220131172257.png"><br>特殊的命令查看帮助信息，不同版本的帮助信息不同，但命令应该是一样的，可能有增加或者减少  </p><p>4 查看文件<br>返回lspatch文件夹，这时文件夹里生成了一个打包好的apk<br><img src="https://raw.githubusercontent.com/Raysamatoken/hexo/main/img/20220131172344.png"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LineageOS的addon.d机制</title>
       <link href="/2022/01/23/lineageos-de-addon-d-ji-zhi/"/>
       <url>/2022/01/23/lineageos-de-addon-d-ji-zhi/</url>
