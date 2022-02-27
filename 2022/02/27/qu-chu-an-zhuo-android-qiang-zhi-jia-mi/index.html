@@ -4,10 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="安卓应用lspatch注入Xposed框架, 流年笙歌的小窝">
-    <meta name="description" content="Lspatch项目地址:https://github.com/LSPosed/LSPatch
-2 准备工作：（lspatch目前是在电脑端使用的，接下来的操作都是基于Windows11，其它版本未必不可）  
-2.1 下载java11 安装">
+    <meta name="keywords" content="去除安卓Android强制加密, 流年笙歌的小窝">
+    <meta name="description" content="要禁止强制加密需要修改/vendor/etc/fstab.qcom，而对于出厂为Android 11的设备都是Virtual A/B结构，vendor分区是一个只读的动态分区。所以要么自己修改编译内核去掉强制加密的函数，要么改vendor.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>安卓应用lspatch注入Xposed框架 | 流年笙歌的小窝</title>
+    <title>去除安卓Android强制加密 | 流年笙歌的小窝</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -150,12 +148,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">安卓应用lspatch注入Xposed框架</h1>
+                    <h1 class="description center-align post-title">去除安卓Android强制加密</h1>
                 </div>
             </div>
         </div>
@@ -283,21 +281,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-31
+                    2022-02-27
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-17
+                    2022-02-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    446
+                    376
                 </div>
                 
 
@@ -327,15 +325,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Lspatch项目地址:<br><a target="_blank" rel="noopener" href="https://github.com/LSPosed/LSPatch">https://github.com/LSPosed/LSPatch</a><br><img src="https://raw.githubusercontent.com/Raysamatoken/hexofile/main/img/4231255_3086f105_7468_2643%401747x884.jpeg.m.jpg"></p>
-<p>2 准备工作：（lspatch目前是在电脑端使用的，接下来的操作都是基于Windows11，其它版本未必不可）  </p>
-<p>2.1 下载java11 安装并配置环境<br><img src="https://raw.githubusercontent.com/Raysamatoken/hexofile/main/img/4231255_adb48855_7468_2645%401649x808.jpeg.m.jpg"></p>
-<p>2.2 下载lspatch-release<br>这个版本打包bilibili实测可用（因为开发者正在开发，其它版本问题未知）  </p>
-<p>2.3 下载需要的apk<br>包括要打包（也就是你想破解）的apk（和你想使用的xposed应用）<br>举个例子：分别为1.apk和1_xposed.apk（最好都用英文命名，防止出现问题）  </p>
-<p>2.4 移动至同一文件夹<br>（实际上这一步骤只是用来让我们运行jar时不用输入绝对路径）<br>我们先将lspatch-release解压到一个文件夹lspatch，然后将需要破解的应用和xpose应用移动至lspatch文件夹<br><img src="https://raw.githubusercontent.com/Raysamatoken/hexofile/main/img/4231255_05d0fb20_7468_2647%401435x631.jpeg.m.jpg"></p>
-<p>3 开始打包<br>3.1 打开CMD或者PowerShell窗口<br>如果此时命令行窗口中的默认路径不是lspatch文件夹的路径，那么请更改至该路径或者将之后命令中用到的路径都改为绝对路径  </p>
-<p>3.2 输入命令<br>输入 <code>java -jar lspatch.jar -h</code> 获取帮助信息<br><img src="https://raw.githubusercontent.com/Raysamatoken/hexo/main/img/20220131172224.png"><br>不内置xposed应用作为模块：<br><code>java -jar lspatch.jar</code> 要打包的应用的文件名.apk<br>例：<code>java -jar lspatch.jar 1.apk</code><br>内置xposed应用作为模块：<br><code>java -jar lspatch.jar</code> 要打包的应用的文件名.apk -m 要内置的xposed应用的文件名.apk<br>例：<code> java -jar lspatch.jar 1.apk -m 1_xposed.apk</code><br><img src="https://raw.githubusercontent.com/Raysamatoken/hexofile/main/img/4231255_a8189a47_7468_2651%402350x1277.jpeg.m.jpg"><br>特殊的命令查看帮助信息，不同版本的帮助信息不同，但命令应该是一样的，可能有增加或者减少  </p>
-<p>4 查看文件<br>返回lspatch文件夹，这时文件夹里生成了一个打包好的apk<br><img src="https://raw.githubusercontent.com/Raysamatoken/hexofile/main/img/4231255_05daef73_7468_2653%401406x190.jpeg.m.jpg"></p>
+                <p>要禁止强制加密需要修改/vendor/etc/fstab.qcom，而对于出厂为Android 11的设备都是Virtual A/B结构，vendor分区是一个只读的动态分区。所以要么自己修改编译内核去掉强制加密的函数，要么改vendor.img</p>
+<p>  解压卡刷包中的payload.bin，使用payload_dumper提取vendor.img<br>如果已经刷入系统了，可以重启到recovery mode，enable adb并且挂载系统分区Mount system之后，直接提取</p>
+<p><code>adb pull /dev/block/mapper/vendor_a vendor.img</code> # A分区<br><code>adb pull /dev/block/mapper/vendor_b vendor.img</code> # B分区  </p>
+<p>当然这两个文件其实都是同一个文件的链接，在我的设备上是一个名为dm-4的块，所以<br><code>adb pull /dev/block/dm-4 vendor.img</code><br>同样可以正常工作  </p>
+<p>使用十六进制编辑器（比如010 editor）打开提取的vendor.img，搜索<code>/dev/block/bootdevice/by-name/userdata</code>，这些字符串在fstab.qcom文件中。<br>向下滑，定位fileencrypt，选择这些字符串，替换为0x20（也就是blank space），我没有保留vendor.img的副本，所以使用fstab.qcom来演示：<br><img src="https://raw.githubusercontent.com/Raysamatoken/hexofile/main/img/Snipaste_2022-02-18_13-00-53.jpg"><br>替换之后：<br><img src="https://raw.githubusercontent.com/Raysamatoken/hexofile/main/img/Snipaste_2022-02-18_13-01-19.jpg"><br>重启到bootloader模式，刷入修改后的vendor.img<br>fastboot flash vendor vendor.img<br>最后，去除dm verify，简单点就直接刷入Magisk.zip，重启即可。</p>
+<p><code>adb shell echo 'KEEPVERITY=false' &gt;/cache/.magisk echo 'KEEPFORCEENCRYPT=false' &gt;&gt;/cache/.magisk exit adb sideload Magisk.zip</code><br>还有一个未测试的方法，如果要手动去除dm verify，可以打开vbmeta.img，ctrl + g跳转到120字节处，修改为00 00 00 03即可。</p>
 
                 
             </div>
@@ -362,7 +357,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://2671066.xyz/2022/01/31/an-zhuo-ying-yong-lspatch-zhu-ru-xposed-kuang-jia/">https://2671066.xyz/2022/01/31/an-zhuo-ying-yong-lspatch-zhu-ru-xposed-kuang-jia/</a>
+                    <a href="https://2671066.xyz/2022/02/27/qu-chu-an-zhuo-android-qiang-zhi-jia-mi/">https://2671066.xyz/2022/02/27/qu-chu-an-zhuo-android-qiang-zhi-jia-mi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -445,54 +440,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/31/zai-termux-zhong-shi-yong-lspatch/">
+                <a href="/2022/02/27/qu-chu-an-zhuo-android-qiang-zhi-jia-mi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="在Termux中使用LSPatch">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="去除安卓Android强制加密">
                         
-                        <span class="card-title">在Termux中使用LSPatch</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-31
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            流年笙歌
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/01/23/lineageos-de-addon-d-ji-zhi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="LineageOS的addon.d机制">
-                        
-                        <span class="card-title">LineageOS的addon.d机制</span>
+                        <span class="card-title">去除安卓Android强制加密</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -503,7 +462,45 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            流年笙歌
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/02/16/an-zhuo-10-ji-yi-shang-de-dong-tai-fen-qu-ji-xing-yong-jiu-qu-chu-data-jia-mi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="安卓10及以上的动态分区机型永久去除data加密">
+                        
+                        <span class="card-title">安卓10及以上的动态分区机型永久去除data加密</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-16
                             </span>
                         <span class="publish-author">
                             
